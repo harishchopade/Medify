@@ -1,0 +1,36 @@
+# Connect to DataBase
+1. Get the url of mongodb and save it in a variable in .env file
+2. Create a Schema of the data you want to enter 
+	2.1 Create a Model Folder and in Create a file 
+	2.2 Require a mongoose and then create a variable and then create a schema
+	2.3 Using new mongoose.Schema({});
+	2.4 assign variable in it
+3. After that create a variable and then by using [ new mongoose.model("nameofVariable",nameofSchema)
+4. In controller  you need to pass this like this 
+	const {username,email,phone,password} = req.body;
+        const userExits = await User.findOne({email});
+5. afterwards you need to validate mail by using userExits in conditional statements 
+6. Creating the User
+	User.create({username,email,phone,password});
+7. all the above things are in try Catch block
+
+
+# Hashing the password using bcryptjs
+1. Require the bcryptjs module in the file.
+2. YOu need to using the "pre" function and pass "save" and then a async function to it 
+like below
+	userSchema.pre("save",async function(next){
+        const user = this;
+3. Need to check if the password is modified or not 
+	if(!user.isModified("password")){
+        next();
+    }
+4. Generating the salt 
+	const saltround = await bcrypt.genSalt(10);
+5. Hashing the password 
+	const hash_password = await bcrypt.hash(user.password,saltround);
+6. Assignning the value
+	 user.password = hash_password
+7. Do thing in trycatch block
+
+	

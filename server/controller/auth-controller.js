@@ -79,4 +79,4 @@ const login = async(req,res)=>{
 const contactus = async(req,res)=>{
     
 }
-module.exports = {home,register,login};
+module.exports = {home,register,login}; 

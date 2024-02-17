@@ -15,7 +15,7 @@ router.route('/login').post(authcontroller.login);
 
 // router.route('/register').get((req,res)=>{
 //     res.
-//     status(200).send("THis is a register page using routes");
+//     status(200).send("This is a register page using routes");
 // })
 
 module.exports = router;
